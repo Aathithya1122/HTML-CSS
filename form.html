@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: rgb(115, 223, 223);
+        }
+        #form{
+            width: 400px;
+            margin: 20vh auto 0 auto;
+            background-color: whitesmoke;
+            border-radius: 5px;
+            padding: 30px;
+        }
+        h1{
+            text-align: center;
+        }
+        #form button{
+            background-color: rgb(158, 77, 158);
+            color: white;
+            border: 1px solid rgb(158, 77, 158);
+            border-radius: 5px;
+            margin: 20px 0px;
+            font-size: 20px;
+            width: 100%;
+            padding: 10px;
+        }
+        .input_g{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .input_g input{
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 5px;
+            margin-top: 5px;
+            font-size: 20px;
+        }
+    </style>
+    <title>SIGN UP FORM</title>
+</head>
+<body>
+    <div class="container">
+        <form action="" id="form" onsubmit="return validateForm()">
+            <h1>SIGN UP</h1>
+            <div class="input_g">
+                <label for="">User Email</label>
+                <input type="email" placeholder="email" id="email">
+            </div>
+            <div class="input_g">
+                <label for="">Password</label>
+                <input type="password" placeholder="password" id="password">
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        const uppercaseRegex = /[A-Z]/;
+        const lowercaseRegex = /[a-z]/;
+        const specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
+        if (!validEmailRegex.test(emailInput.value)) {
+            alert("Invalid email address! Please enter a valid email address.");
+            return false;
+        }
+        if (passwordInput.value.length < 8) {
+            alert("Password must be at least 8 characters long. Please enter a valid password.");
+            return false;
+        }
+        if (!uppercaseRegex.test(passwordInput.value) || !lowercaseRegex.test(passwordInput.value) || !specialCharRegex.test(passwordInput.value)) {
+            alert("Password must contain at least one uppercase letter, one lowercase letter, and one special character.");
+            return false;
+        }
+        alert("Successfully You sign up");
+        return true;
+    }
+    </script>
+</body>
+</html>
